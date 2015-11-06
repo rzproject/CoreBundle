@@ -1,0 +1,27 @@
+{
+    "name": "rz/core-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony RzCoreBundle",
+    "keywords": ["comment", "sonata", "extension"],
+    "homepage": "https://github.com/rzproject/CoreBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mell zamora",
+            "email": "mell@rzproject.org",
+            "homepage": "http://www.rzproject.org"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "rmzamora/core-bundle": "2.5.0.*"
+    },
+    "autoload": {
+        "psr-4": { "Rz\\CoreBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.1.0.x-dev"
+        }
+    }
+}
