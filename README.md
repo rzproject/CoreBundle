@@ -1,9 +1,9 @@
 AdminBundle
 ===========
 
-Symfony2 Bundle - An extension of [SonataCommentBundle](https://github.com/sonata-project/SonataCommentBundle "SonataCommentBundle")
+Symfony2 Bundle - An extension of [SonataCoreBundle](https://github.com/rmzamora/SonataCoreBundle "SonataCoreBundle")
 
-Uses a forked version of SonataCommentBundle
+Uses a forked version of SonataCoreBundle
 
 **DEVELOPMENT VERSION**
 
