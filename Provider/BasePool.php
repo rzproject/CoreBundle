@@ -12,6 +12,8 @@ abstract class BasePool implements PoolInterface
 
     protected $defaultGroup;
 
+    protected $slugify;
+
     /**
      * @param string $collection
      */
@@ -91,5 +93,21 @@ abstract class BasePool implements PoolInterface
         }
 
         return $group['provider'];
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlugify()
+    {
+        return $this->slugify;
+    }
+
+    /**
+     * @param mixed $slugify
+     */
+    public function setSlugify($slugify)
+    {
+        $this->slugify = $slugify;
     }
 }

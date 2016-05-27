@@ -13,4 +13,14 @@ interface ProviderInterface
     public function getTranslator();
 
     public function setTranslator($translator);
+
+    /**
+     * @return mixed
+     */
+    public function getSlugify();
+
+    /**
+     * @param mixed $slugify
+     */
+    public function setSlugify($slugify);
 }
