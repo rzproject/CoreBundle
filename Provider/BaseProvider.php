@@ -9,6 +9,9 @@ abstract class BaseProvider implements ProviderInterface
     protected $name;
     protected $translator;
     protected $slugify;
+    protected $defaultSettings;
+    protected $rawSettings;
+    protected $settings;
 
     /**
      * @param string                                           $name
@@ -52,5 +55,100 @@ abstract class BaseProvider implements ProviderInterface
     public function setSlugify($slugify)
     {
         $this->slugify = $slugify;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRawSettings()
+    {
+        return $this->rawSettings;
+    }
+
+    /**
+     * @param mixed $rawSettings
+     */
+    public function setRawSettings($rawSettings)
+    {
+        $this->rawSettings = $rawSettings;
+        $this->processSettings();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSettings()
+    {
+        return $this->settings;
+    }
+
+    /**
+     * @param mixed $settings
+     */
+    public function setSettings($settings)
+    {
+        $this->settings = $settings;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSetting($name, $default = null)
+    {
+        return isset($this->settings[$name]) ? $this->settings[$name] : $default;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setSetting($name, $value)
+    {
+        $this->settings[$name] = $value;
+    }
+
+    public function processSettings() {
+
+        if(!$this->getRawSettings()) {
+            return null;
+        }
+        foreach ($this->getRawSettings() as $key=>$rawSetting) {
+            $setting = [];
+            foreach($rawSetting['params'] as $val) {
+                $setting[$val['key']] = $val['value'];
+            }
+            $this->setSetting($key, $setting);
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDefaultSettings()
+    {
+        return $this->defaultSettings;
+    }
+
+    /**
+     * @param mixed $settings
+     */
+    public function setDefaultSettings($defaultSettings)
+    {
+        $this->defaultSettings = $defaultSettings;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDefaultSetting($name, $default = null)
+    {
+        return isset($this->defaultSettings[$name]) ? $this->defaultSettings[$name] : $default;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDefaultSetting($name, $value)
+    {
+        $this->defaultSettings[$name] = $value;
     }
 }
