@@ -60,7 +60,6 @@ class TemplateLoaderExtension extends \Twig_Extension
      */
     public function getTemplate($name)
     {
-
         dump($name);
         $templateName = $this->loader->getTemplate($name);
         try {

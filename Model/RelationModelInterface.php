@@ -2,7 +2,6 @@
 
 namespace Rz\CoreBundle\Model;
 
-
 interface RelationModelInterface
 {
     /**
