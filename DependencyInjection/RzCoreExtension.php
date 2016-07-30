@@ -24,9 +24,9 @@ class RzCoreExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('form.xml');
+        $loader->load('utils.xml');
+        $loader->load('twig.xml');
         $this->registerService($config, $container);
-
-
     }
 
     protected function registerService(array $config, ContainerBuilder $container)
