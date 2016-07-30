@@ -106,14 +106,14 @@ abstract class BaseProvider implements ProviderInterface
         $this->settings[$name] = $value;
     }
 
-    public function processSettings() {
-
-        if(!$this->getRawSettings()) {
+    public function processSettings()
+    {
+        if (!$this->getRawSettings()) {
             return null;
         }
         foreach ($this->getRawSettings() as $key=>$rawSetting) {
             $setting = [];
-            foreach($rawSetting['params'] as $val) {
+            foreach ($rawSetting['params'] as $val) {
                 $setting[$val['key']] = $val['value'];
             }
             $this->setSetting($key, $setting);
