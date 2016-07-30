@@ -88,6 +88,8 @@ var CoreAjax = {
         var url = jQuery(subject).is('[data-href]') ? jQuery(subject).attr('data-href') : null;
         var targetClass = jQuery(subject).is('[data-target-class]') ? jQuery(subject).attr('data-target-class') : null;
         var targetId = jQuery(subject).is('[data-target-id]') ? jQuery(subject).attr('data-target-id') : null;
+        var loadMoreClass = jQuery(subject).is('[data-load-more-class]') ? jQuery(subject).attr('data-load-more-class') : null;
+        var loadMoreId = jQuery(subject).is('[data-load-more-id]') ? jQuery(subject).attr('data-load-more-id') : null;
 
         if(url !== null && (targetClass !== null || targetId !== null)) {
             jQuery.ajax({
@@ -100,7 +102,17 @@ var CoreAjax = {
                     return data.message;
                 }
 
-                jQuery('.'+targetClass).append(data.content);
+                if(targetClass) {
+                    jQuery('.'+targetClass).append(data.content);
+                } else if(targetId) {
+                    jQuery('#'+targetId).append(data.content);
+                }
+
+                if(loadMoreClass) {
+                    jQuery('.'+loadMoreClass).html(data.loadMore);
+                } else if(loadMoreId) {
+                    jQuery('#'+loadMoreId).html(data.loadMore);
+                }
 
                 if(data.url !== null) {
                     jQuery(subject).attr('data-href', data.url);
